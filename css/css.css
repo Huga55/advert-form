@@ -1,0 +1,159 @@
+*{
+	padding: 0;
+	margin:0;
+}
+
+a:focus, .button:focus, .button.alt:focus, button:focus, input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus {
+    outline: none;
+}
+
+li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+	color: #000000;
+	font-family: "SF UI Display", serif;
+	font-weight: 300;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+a:hover {
+	opacity: 0.8;
+}
+
+body {
+	font-family: ;
+	font-weight: ;
+	color: ;
+	font-size: ;
+	background-color: ;
+}
+
+.form-group {
+	margin: 0;
+}
+
+.container {
+	max-width: 1160px;
+	padding: 0 10px;
+}
+
+
+.advert {
+	background: #f2f4f6;
+}
+
+.advert__back-button {
+	margin-bottom: 16px;
+	background: #fff;
+	opacity: 1;
+    border: 1px solid #c9cbcd;
+}
+
+.advert__window {
+	max-width: 866px;
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 30px;
+	border-radius: 5px;
+	background: #fff;
+	box-sizing: border-box;
+    box-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,.07);
+}
+
+.advert__title {
+	margin-bottom: 24px;
+	font-size: 24px;
+}
+
+.advert__group {
+	margin-bottom: 20px;
+}
+
+.advert__label {
+	margin-bottom: 8px;
+	font-size: 14px;
+}
+
+.advert__radios {
+	width: 100%;
+}
+
+.advert__radios>.btn.advert__change {
+	height: 40px;
+	display: inline-block;
+	flex: initial;
+	background: #fff;
+	color: #000;
+}
+
+.advert__group_property {
+	width: 440px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.advert__group_property-none {
+	display: none;
+}
+
+.advert__group-left,
+.advert__group-right {
+	width: 50%;
+	margin-bottom: -16px;
+}
+
+.advert__radio {
+	margin-bottom: 16px;
+}
+
+.advert__radio_none {
+	display: none;
+}
+
+.advert__title_youtube {
+	margin-bottom: 8px;
+}
+
+.advert__label_youtube {
+	margin-bottom: 24px;
+}
+
+.advert__group_youtube {
+	margin-bottom: 0;
+}
+
+.advert__group_photo {
+	margin-bottom: 0;
+}
+
+
+@media screen and (max-width: 490px) {
+	.advert__group_property {
+		width: 100%;
+		flex-direction: column;
+	}
+
+	.advert__group-left {
+		margin-bottom: 0px;
+	}
+
+	.advert__group-left,
+	.advert__group-right {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 350px) {
+	.advert__window {
+		padding: 20px;
+	}
+
+	.advert__change {
+		zoom: 0.95;
+	}
+}
