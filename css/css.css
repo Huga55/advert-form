@@ -80,6 +80,7 @@ body {
 
 .advert__radios {
 	width: 100%;
+	flex-wrap: wrap;
 }
 
 .advert__radios>.btn.advert__change {
@@ -130,6 +131,140 @@ body {
 .advert__group_photo {
 	margin-bottom: 0;
 }
+
+.advert__subtitle {
+	margin-bottom: 8px;
+	font-weight: 600;
+}
+
+.advert__radios_inline {
+	width: auto;
+}
+
+.advert__row {
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.advert__room {
+	min-width: 40px;
+	margin-right: 8px;
+	background: #fff;
+	color: #000;
+}
+
+.btn-group > .advert__room {
+	margin-bottom: 8px;
+	flex: initial;
+}
+
+.advert__input-text {
+	width: 150px;
+}
+
+.advert__input-block {
+	margin-right: 30px;
+	position: relative;
+}
+
+.meter::after {
+	content:"м²";
+	width: 5px;
+	height: 5px;
+	position: absolute;
+	right: 20px;
+	bottom: 25px;
+}
+
+.meter_simple::after {
+	content:"м";
+}
+
+.advert__checkbox-block {
+	width: 240px;
+	margin: 10px 0;
+}
+
+.advert__row_checkbox {
+	margin: -10px 0;
+	margin-bottom: 10px;
+	flex-wrap: wrap;
+}
+
+.window__block {
+	margin-bottom: 48px;
+}
+
+.meter_year::after {
+	content: "г";
+}
+
+.advert__box {
+	min-width: 160px;
+}
+
+.meter_site::after {
+	content: "сот.";
+	right: 30px;
+}
+
+.advert__row_home {
+	max-width: 600px;
+	flex-wrap: wrap;
+}
+
+.advert__box {
+	margin-bottom: 20px;
+}
+
+.meter_power::after {
+	content: "кВт";
+	right: 30px;
+}
+
+.advert__box_access {
+	margin-right: 30px;
+}
+
+.advert__row_office-name {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+}
+
+.advert__input-block_name {
+	display: inline-block;
+	margin-bottom: 27px;
+}
+
+.advert__input-block_name input {
+	width: 300px;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 720px) {
+	.advert__row_office-class {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.advert__input-block_name input {
+		width: 260px;
+	}
+}
+
 
 
 @media screen and (max-width: 490px) {

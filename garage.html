@@ -1,0 +1,149 @@
+<div class="window__block" data-block="garage">
+	<h2 class="advert__title">
+		Гараж
+	</h2>
+	<div class="advert__row">
+  		<div class="form-group advert__input-block meter">
+		    <label for="garage_area">Площадь</label>
+		    <input type="text" class="form-control advert__input-text" id="garage_area" name="garage_area">
+		</div>
+  	</div>
+  	<div class="advert__subtitle" data-box="garage_parking">
+    	Тип парковки
+    </div>
+  	<div class="advert__row" data-box="garage_parking">	
+    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+    		<label class="btn btn-secondary advert__room" data-input="variable">
+	    		<input type="radio" name="garage_parking" id="garage_parking-1" value="1"> Наземная
+	  		</label>
+	  		<label class="btn btn-secondary advert__room" data-input="variable">
+	    		<input type="radio" name="garage_parking" id="garage_parking-2" value="2"> Подземная
+	  		</label>
+	  		<label class="btn btn-secondary advert__room" data-input="variable">
+	    		<input type="radio" name="garage_parking" id="garage_parking-3" value="3"> Многоуровневая
+	  		</label>
+	  	</div>
+  	</div>
+  	<div class="advert__subtitle">
+    	Статус
+    </div>
+  	<div class="advert__row">	
+    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+    		<label class="btn btn-secondary advert__room" data-input="variable">
+	    		<input type="radio" name="garage_status" id="garage_status-1" value="1"> Собственность
+	  		</label>
+	  		<label class="btn btn-secondary advert__room" data-input="variable">
+	    		<input type="radio" name="garage_status" id="garage_status-2" value="2"> Кооператив
+	  		</label>
+	  		<label class="btn btn-secondary advert__room" data-input="variable">
+	    		<input type="radio" name="garage_status" id="garage_status-3" value="3"> По доверенности
+	  		</label>
+	  	</div>
+  	</div>
+  	<div class="advert__row">
+  		<div class="form-group advert__input-block meter">
+		    <label for="general_name_gks">Название ГКС</label>
+		    <input type="text" class="form-control advert__input-text" id="general_name_gks" name="general_name_gks">
+		</div>
+  	</div>
+  	<div class="advert__subtitle">
+    	Доступ
+    </div>
+  	<div class="advert__row">	
+    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+    		<label class="btn btn-secondary advert__room" data-input="variable">
+	    		<input type="radio" name="garage_access" id="garage_access-1" value="1"> Свободный
+	  		</label>
+	  		<label class="btn btn-secondary advert__room" data-input="variable">
+	    		<input type="radio" name="garage_access" id="garage_access-2" value="2"> Пропускная система
+	  		</label>
+	  	</div>
+  	</div>
+  	<div class="advert__row">
+  		<div class="advert__box">
+  			<div class="advert__subtitle">
+		    	Охрана
+		    </div>
+  			<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+	    		<label class="btn btn-secondary advert__room" data-input="variable">
+		    		<input type="radio" name="secur" id="secur-1" value="true"> да
+		  		</label>
+		  		<label class="btn btn-secondary advert__room" data-input="variable">
+		    		<input type="radio" name="secur" id="secur-2" value="false"> нет
+		  		</label>
+		  	</div>
+  		</div>
+  		<div class="advert__box">
+  			<div class="advert__subtitle">
+		    	Эектричество
+		    </div>
+  			<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+	    		<label class="btn btn-secondary advert__room" data-input="variable">
+		    		<input type="radio" name="electr" id="electr-1" value="true"> да
+		  		</label>
+		  		<label class="btn btn-secondary advert__room" data-input="variable">
+		    		<input type="radio" name="electr" id="electr-2" value="false"> нет
+		  		</label>
+		  	</div>
+  		</div>
+  		<div class="advert__box">
+  			<div class="advert__subtitle">
+		    	Отопление
+		    </div>
+  			<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+	    		<label class="btn btn-secondary advert__room" data-input="variable">
+		    		<input type="radio" name="heating" id="heating-1" value="true"> да
+		  		</label>
+		  		<label class="btn btn-secondary advert__room" data-input="variable">
+		    		<input type="radio" name="heating" id="heating-2" value="false"> нет
+		  		</label>
+		  	</div>
+  		</div>
+  		<div class="advert__box">
+  			<div class="advert__subtitle">
+		    	Водопровод
+		    </div>
+  			<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+	    		<label class="btn btn-secondary advert__room" data-input="variable">
+		    		<input type="radio" name="water" id="water-1" value="true"> да
+		  		</label>
+		  		<label class="btn btn-secondary advert__room" data-input="variable">
+		    		<input type="radio" name="water" id="water-2" value="false"> нет
+		  		</label>
+		  	</div>
+  		</div>
+  	</div>
+  	<div class="advert__subtitle">
+    	Инфраструктура
+    </div>
+  	<div class="advert__row advert__row_checkbox" data-box="office_add_infra">
+  		<div class="custom-control custom-checkbox mr-sm-2 advert__checkbox-block">
+	        <input type="checkbox" class="custom-control-input" id="infra_1" name="infra_1">
+	        <label class="custom-control-label" for="infra_1">Автомойка</label>
+	    </div>
+	    <div class="custom-control custom-checkbox mr-sm-2 advert__checkbox-block">
+	        <input type="checkbox" class="custom-control-input" id="infra_2" name="infra_2">
+	        <label class="custom-control-label" for="infra_2">Автосервис</label>
+	    </div>
+	    <div class="custom-control custom-checkbox mr-sm-2 advert__checkbox-block">
+	        <input type="checkbox" class="custom-control-input" id="infra_3" name="infra_3">
+	        <label class="custom-control-label" for="infra_3">Шиномонтаж</label>
+	    </div>
+	    <div class="custom-control custom-checkbox mr-sm-2 advert__checkbox-block">
+	        <input type="checkbox" class="custom-control-input" id="infra_4" name="infra_4">
+	        <label class="custom-control-label" for="infra_4">Вентиляция</label>
+	    </div>
+	    <div class="custom-control custom-checkbox mr-sm-2 advert__checkbox-block">
+	        <input type="checkbox" class="custom-control-input" id="infra_5" name="infra_5">
+	        <label class="custom-control-label" for="infra_5">Пожаротушение</label>
+	    </div>
+	    <div class="custom-control custom-checkbox mr-sm-2 advert__checkbox-block" data-box="garage_checkbox">
+	        <input type="checkbox" class="custom-control-input" id="infra_6" name="infra_6">
+	        <label class="custom-control-label" for="infra_6">Подъемник</label>
+	    </div>
+	    <div class="custom-control custom-checkbox mr-sm-2 advert__checkbox-block" data-box="garage_checkbox">
+	        <input type="checkbox" class="custom-control-input" id="infra_7" name="infra_7">
+	        <label class="custom-control-label" for="infra_7">Смотровая яма</label>
+	    </div>
+  	</div>
+</div>
