@@ -32,6 +32,10 @@ body {
 	background-color: ;
 }
 
+.none {
+	display: none !important;
+}
+
 .form-group {
 	margin: 0;
 }
@@ -125,7 +129,12 @@ body {
 }
 
 .advert__group_youtube {
+	display: flex;
 	margin-bottom: 0;
+}
+
+.advert__youtube-button {
+	margin-left: 20px;
 }
 
 .advert__group_photo {
@@ -244,17 +253,124 @@ body {
 	width: 300px;
 }
 
+.advert__box_maybe {
+	margin-right: 20px;
+}
+
+.meter_price::after {
+	content: "₽";
+}
+
+.meter_rent::after {
+	content: "₽/мес";
+	width: 50px;
+	height: 20px;
+	right: 0px;
+	bottom: 10px;
+	margin-bottom: 0px;
+}
+
+.advert__checkbox_price {
+	margin-top: 38px;
+}
+
+.window__block:last-child,
+.advert__row:last-child {
+	margin-bottom: 0;
+}
 
 
+.form-group .advert__textarea {
+	height: 150px;
+	padding-bottom: 30px;
+}
+
+.advert__text {
+	max-width: 477px;
+	margin-bottom: 20px;
+}
+
+.advert__buttons {
+	position: fixed;
+	bottom: 50px;
+	z-index: 2;
+}
 
 
+.advert__container-file {
+	width: 100%;
+}
+
+.advert__container-file {
+	min-height: 200px;
+	padding: 20px;
+	margin: 0 -10px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	border: 1px dashed #000;
+	box-sizing: border-box;
+}
+
+.dz-preview {
+	margin: 0 10px;
+	margin-bottom: 20px;
+	display: inline-block;
+}
+
+.dz-success-mark {
+	display: none;
+}
+
+.dz-error-mark {
+	display: none;
+}
+
+.dz-details {
+	display: none;
+}
+
+.dz-size {
+	text-align: center;
+}
+
+.dz-filename {
+	text-align: center;
+}
+
+.dz-remove {
+	display: block;
+	background: red;
+	color: #fff;
+	opacity: 0.8;
+	text-align: center;
+}
 
 
+.advert__youtube_none {
+	display: none !important;
+}
 
+.advert__youtube-result {
+	display: flex;
+	align-items: center;
+}
 
+.advert__youtube-img {
+	margin-right: 20px;
+}
+
+.advert__youtube-link {
+	margin-bottom: 10px;
+}
 
 
 @media screen and (max-width: 720px) {
+	.advert__row {
+		flex-wrap: wrap;
+	}
+
 	.advert__row_office-class {
 		flex-direction: column;
 		align-items: flex-start;
@@ -280,6 +396,17 @@ body {
 	.advert__group-left,
 	.advert__group-right {
 		width: 100%;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.advert__group_youtube {
+		flex-direction: column;
+	}
+
+	.advert__youtube-button {
+		margin: 0;
+		margin-top: 20px;
 	}
 }
 

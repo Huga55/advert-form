@@ -14,36 +14,19 @@
 	<!-- title -->
 	<title></title>
 
-	<!-- HTML -->
-	<!--
-	<link rel="import" href="/about_office.html">
-	<link rel="import" href="/apart.html">
-	<link rel="import" href="/comercial_rent.html">
-	<link rel="import" href="/garage.html">
-	<link rel="import" href="/home.html">
-	<link rel="import" href="/house.html">
-	<link rel="import" href="/living_additional.html">
-	<link rel="import" href="/living_deal.html">
-	<link rel="import" href="/living_rent.html">
-	<link rel="import" href="/office.html">
-	<link rel="import" href="/office_additional.html">
-	<link rel="import" href="/room.html">
-	<link rel="import" href="import/site.html">
--->
-
 	<!-- fonts, css -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<link rel="stylesheet" href="dist/dropzone.css" />
 	<link rel="stylesheet" href="css/css.css">
 </head>
 <body>
-	<div w3-include-html="site.html"></div>
 	<main class="main" id="main">
 		<section class="advert">
 			<div class="container">
 				<div class="advert__back">
 					<button type="button" class="btn advert__back-button">Мое объявления</button>
 				</div>
-				<form action="" class="advert__form">
+				<form class="advert__form">
 					<div class="advert__window">
 						<h2 class="advert__title">
 							Мои объявление
@@ -63,13 +46,13 @@
 						    <label class="advert__label">Вид недвижимости</label>
 						    <div class="btn-group btn-group-toggle advert__radios" data-toggle="buttons">
 							  	<label class="btn btn-secondary active advert__change">
-							    	<input type="radio" class="input_view" name="advert_view" id="type1" checked value="living" data-id="1" data-input="follow"> Жилая
+							    	<input type="radio" class="input_view" name="advert_view" id="type2-1" checked value="living" data-id="1" data-input="follow"> Жилая
 							  	</label>
 							  	<label class="btn btn-secondary advert__change">
-							    	<input type="radio" class="input_view" name="advert_view" id="type2" value="commercial" data-id="2" data-input="follow"> Коммерческая
+							    	<input type="radio" class="input_view" name="advert_view" id="type2-2" value="commercial" data-id="2" data-input="follow"> Коммерческая
 							  	</label>
 							  	<label class="btn btn-secondary advert__change">
-							    	<input type="radio" class="input_view" name="advert_view" id="type3" value="garage" data-id="3" data-input="follow"> Гараж
+							    	<input type="radio" class="input_view" name="advert_view" id="type2-3" value="garage" data-id="3" data-input="follow"> Гараж
 							  	</label>
 							</div>
 					  	</div>
@@ -173,32 +156,116 @@
 						<h2 class="advert__title">
 							Фотографии
 						</h2>
-						<div class="form-group advert__group advert__group_photo">
-						    <input type="email" class="form-control" aria-describedby="emailHelp">
+						<div class="advert__container-file" id="drop">
+							
 						</div>
 					</div>
 					<div class="advert__window">
 						<h2 class="advert__title advert__title_youtube">
 							Видео с YouTube
 						</h2>
-						<label class="advert__label advert__label_youtube">
-							Добавьте видео вашей недвижимости. Объявления с видео привлекают больше внимания и получают больше звонков
-						</label>
-						<div class="form-group advert__group advert__group_youtube">
-						    <input type="email" class="form-control" aria-describedby="emailHelp">
+						<div class="advert__youtube-upload">
+							<label class="advert__label advert__label_youtube">
+								Добавьте видео вашей недвижимости. Объявления с видео привлекают больше внимания и получают больше звонков
+							</label>
+							<div class="form-group advert__group advert__group_youtube">
+							    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Ссылка на видео YouTube" name="youtube">
+							    <span class="btn btn-dark advert__youtube-button">
+							    	Добавить
+							    </span>
+							</div>
+						</div>
+						<div class="advert__youtube-result advert__youtube_none">
+							<div class="advert__youtube-preview">
+								<img src="//img.youtube.com/vi/JMJXvsCLu6s/default.jpg" alt="" class="advert__youtube-img">
+							</div>
+							<div>
+								<div class="advert__youtube-link">asdasx</div>
+								<span class="btn btn-dark advert__youtube-delete">
+									Удалить
+								</span>
+							</div>
 						</div>
 					</div>
 					<div class="advert__window" data-options="general_form">
 											
 					</div>	
+					<div class="advert__window" data-options="sale_form">
+											
+					</div>	
+					<div class="advert__window">
+						<h2 class="advert__title">
+							Описание
+						</h2>	
+						<div class="form-group">
+						    <textarea class="form-control advert__textarea" name="describe" placeholder="Расскажите о недвижимости"></textarea>
+						</div>				
+					</div>
+					<div class="advert__window">
+						<h2 class="advert__title">
+							Контакты
+						</h2>	
+						<span class="btn btn-dark">
+							Указать номер телефона
+						</span>				
+					</div>
+					<div class="advert__window">
+						<h2 class="advert__title">
+							Готовность к онлайн-показу
+						</h2>	
+						<div class="advert__text">
+							Выберите, если готовы показать объект с помощью видео-звонка — например, через WhatsApp, Zoom, Skype или другой сервис
+						</div>
+						<div class="advert__row">
+							<div class="custom-control custom-checkbox mr-sm-2 ">
+						        <input type="checkbox" class="custom-control-input" id="ready" name="is_ready">
+						        <label class="custom-control-label" for="ready">Готов показать объект онлайн</label>
+						    </div>
+						</div>						
+					</div>
+					<div class="advert__window">
+						<h2 class="advert__title">
+							Привилегии от Сбербанка
+						</h2>	
+						<div class="advert__text">
+							Введите кадастровый номер: мы проверим недвижимость, и объявление получит значки Скидка на ипотеку 0,3% и Ипотека без отчёта об оценке. Объявления с такими значками получают больше звонков от покупателей. Это бесплатно.
+						</div>
+						<div class="advert__row">
+							<div class="custom-control custom-checkbox mr-sm-2 ">
+						        <input type="checkbox" class="custom-control-input" id="ready" name="is_ready">
+						        <label class="custom-control-label" for="ready">Готов показать объект онлайн</label>
+						    </div>
+						</div>						
+					</div>
+					<div class="advert__buttons">
+						<button class="btn btn-dark">Опубликовать</button>
+						<button class="btn btn-primary">Сохранить как черновик</button>
+						<button class="btn btn-primary">Удалить</button>
+					</div>	
 				</form>
 			</div>
 		</section>
+		<div w3-include-html="about_office.html" class="none"></div>
+		<div w3-include-html="apart.html" class="none"></div>
+		<div w3-include-html="comercial_rent.html" class="none"></div>
+		<div w3-include-html="garage.html" class="none"></div>
+		<div w3-include-html="home.html" class="none"></div>
+		<div w3-include-html="house.html" class="none"></div>
+		<div w3-include-html="living_additional.html" class="none"></div>
+		<div w3-include-html="living_deal.html" class="none"></div>
+		<div w3-include-html="living_rent.html" class="none"></div>
+		<div w3-include-html="office.html" class="none"></div>
+		<div w3-include-html="office_additional.html" class="none"></div>
+		<div w3-include-html="room.html" class="none"></div>
+		<div w3-include-html="site.html" class="none"></div>
+		<div w3-include-html="sale.html" class="none"></div>
+		<div w3-include-html="rent.html" class="none"></div>
 	</main>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- jQuery and JS bundle w/ Popper.js -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/gh/jquery-form/form@4.3.0/dist/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
 	<script>
 	function includeHTML() {
 	  var z, i, elmnt, file, xhttp;
@@ -228,7 +295,10 @@
 	  }
 	};
 	includeHTML();
+
 	</script>
+	
+	<script src="dist/dropzone.js"></script>
 	<script src="js/script.js"></script>
 </body>
 </html>
