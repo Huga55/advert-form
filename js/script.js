@@ -489,8 +489,8 @@ $(document).on("input", ".label_error>input", function() {
 //снять ошибку с инпута, если корректный
 $(document).on("input", ".is-invalid", function() {
 	const types = $(this).attr("data-validate-type").split(" ");
-	const value = $(this).val();
-	const error = false;
+	const value = $(this).val().replace(/\_/g, "");
+	let error = false;
 
 	for(let type of types) {
 		const result = reglations[type](value);
@@ -514,4 +514,6 @@ const reglations = {
 	home: (value) => (+value > 0 && +value <= 10000) || "От 1 до 10тыс",
 	site: (value) => (+value > 0 && +value <= 5000) || "От 1 до 5тыс",
 	office: (value) => (+value > 0 && +value <= 9999999) || "От 1 до 9млн",
+	price: (value) => (+value >= 100000 && +value <= 1000000000) || "от 100тыс до 1млрд",
+	rent: (value) => (+value >= 1000 && +value <= 10000000) || "от 1тыс до 10млн",
 }
