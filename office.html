@@ -5,15 +5,15 @@
 	<div class="advert__row">
 		<div class="form-group advert__input-block meter">
 		    <label for="home_area">Площадь</label>
-		    <input type="text" class="form-control advert__input-text" id="office_area" name="office_area">
+		    <input type="text" class="form-control advert__input-text" id="office_area" name="office_area" data-validate="true" data-validate-type="required office" data-mask="true" data-mask-type="9999999">
 		</div>
   		<div class="form-group advert__input-block">
 		    <label for="home_area">Этаж</label>
-		    <input type="text" class="form-control advert__input-text" id="office_floor" name="office_floor">
+		    <input type="text" class="form-control advert__input-text" id="office_floor" name="office_floor" data-validate="true" data-validate-type="required two" data-mask="true" data-mask-type="99">
 		</div>
 		<div class="form-group advert__input-block">
 		    <label for="home_floor">Этажей в здании</label>
-		    <input type="text" class="form-control advert__input-text" id="office_floor_count" name="office_floor_count">
+		    <input type="text" class="form-control advert__input-text" id="office_floor_count" name="office_floor_count" data-validate="true" data-validate-type="required two" data-mask="true" data-mask-type="99">
 		</div>
   	</div>
   	<div class="advert__subtitle" data-box="office_rooms">
@@ -42,7 +42,7 @@
     	Тип здания
     </div>
   	<div class="advert__row">	
-    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons" data-validate="true" data-validate-type="radio">
     		<label class="btn btn-secondary advert__room" data-input="variable">
 	    		<input type="radio" name="office_type" value="1"> Бизнес центр
 	  		</label>

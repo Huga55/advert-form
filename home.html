@@ -5,26 +5,26 @@
 	<div class="advert__row">
 		<div class="form-group advert__input-block meter" data-box="homepart">
 		    <label for="home_area">Размер доли</label>
-		    <input type="text" class="form-control advert__input-text" id="home_part" name="home_part">
+		    <input type="text" class="form-control advert__input-text" id="home_part" name="home_part" data-validate="true" data-validate-type="required">
 		</div>
   		<div class="form-group advert__input-block meter">
 		    <label for="home_area">Площадь дома</label>
-		    <input type="text" class="form-control advert__input-text" id="home_area" name="home_area">
+		    <input type="text" class="form-control advert__input-text" id="home_area" name="home_area" data-validate="true" data-validate-type="required home" data-mask="true" data-mask-type="99999">
 		</div>
 		<div class="form-group advert__input-block">
 		    <label for="home_floor">Этажей в доме</label>
-		    <input type="text" class="form-control advert__input-text" id="home_floor" name="home_floor">
+		    <input type="text" class="form-control advert__input-text" id="home_floor" name="home_floor" data-mask="true" data-mask-type="99">
 		</div>
 		<div class="form-group advert__input-block meter meter_site">
 		    <label for="home_site_area">Площадь участка</label>
-		    <input type="text" class="form-control advert__input-text" id="home_site_area" name="site_area">
+		    <input type="text" class="form-control advert__input-text" id="home_site_area" name="site_area" data-validate="true" data-validate-type="required site" data-mask="true" data-mask-type="9999">
 		</div>
   	</div>
   	<div class="advert__subtitle">
     	Тип участка
     </div>
   	<div class="advert__row">	
-    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons" data-validate="true" data-validate-type="radio">
     		<label class="btn btn-secondary advert__room" data-input="variable">
 	    		<input type="radio" name="site" value="1"> ИЖС
 	  		</label>

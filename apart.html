@@ -7,8 +7,8 @@
 	    	Количество комнат
 	    </div>
 		<div class="advert__row">	
-	    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
-	    		<label class="btn btn-secondary advert__room" for="room-1" data-input="variable">
+	    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons" data-validate="true" data-validate-type="radio">
+	    		<label class="btn btn-secondary advert__room" data-input="variable">
 		    		<input type="radio" name="room" value="1"> 1
 		  		</label>
 		  		<label class="btn btn-secondary advert__room" data-input="variable">
@@ -35,29 +35,29 @@
 	  	<div class="advert__row">
 	  		<div class="form-group advert__input-block meter">
 			    <label for="general_area">Общая площадь</label>
-			    <input type="text" class="form-control advert__input-text" id="general_area" name="general_area">
+			    <input type="text" class="form-control advert__input-text" id="general_area" name="general_area" data-validate="true" data-validate-type="required three" data-mask="true" data-mask-type="999">
 			</div>
 			<div class="form-group advert__input-block meter">
 			    <label for="kitchen_area">Площадь кухни</label>
-			    <input type="text" class="form-control advert__input-text" id="kitchen_area" name="kitchen_area">
+			    <input type="text" class="form-control advert__input-text" id="kitchen_area" name="kitchen_area" data-mask="true" data-mask-type="999">
 			</div>
 			<div class="form-group advert__input-block meter">
 			    <label for="living_area">Жилая площадь</label>
-			    <input type="text" class="form-control advert__input-text" id="living_area" name="living_area">
+			    <input type="text" class="form-control advert__input-text" id="living_area" name="living_area" data-mask="true" data-mask-type="999">
 			</div>
 	  	</div>
 	  	<div class="advert__row">
 	  		<div class="form-group advert__input-block">
 			    <label for="floor">Этаж</label>
-			    <input type="text" class="form-control advert__input-text" id="floor" name="floor">
+			    <input type="text" class="form-control advert__input-text" id="floor" name="floor" data-validate="true" data-validate-type="required two" data-mask="true" data-mask-type="99">
 			</div>
 			<div class="form-group advert__input-block">
 			    <label for="floor_count">Этажей в доме</label>
-			    <input type="text" class="form-control advert__input-text" id="floor_count" name="floor_count">
+			    <input type="text" class="form-control advert__input-text" id="floor_count" name="floor_count" data-mask="true" data-mask-type="99">
 			</div>
 			<div class="form-group advert__input-block meter meter_simple">
 			    <label for="roof">Высота потолков</label>
-			    <input type="text" class="form-control advert__input-text" id="roof" name="roof">
+			    <input type="text" class="form-control advert__input-text" id="roof" name="roof" data-mask="true" data-mask-type="99">
 			</div>
 	  	</div>
 	  	<div class="advert__subtitle">

@@ -5,14 +5,14 @@
 	<div class="advert__row">
   		<div class="form-group advert__input-block meter">
 		    <label for="garage_area">Площадь</label>
-		    <input type="text" class="form-control advert__input-text" id="garage_area" name="garage_area">
+		    <input type="text" class="form-control advert__input-text" id="garage_area" name="garage_area" data-validate="true" data-validate-type="required office" data-mask="true" data-mask-type="9999999">
 		</div>
   	</div>
   	<div class="advert__subtitle" data-box="garage_parking">
     	Тип парковки
     </div>
   	<div class="advert__row" data-box="garage_parking">	
-    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons" data-validate="true" data-validate-type="radio">
     		<label class="btn btn-secondary advert__room" data-input="variable">
 	    		<input type="radio" name="garage_parking" value="1"> Наземная
 	  		</label>

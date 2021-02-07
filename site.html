@@ -5,14 +5,14 @@
 	<div class="advert__row">
 		<div class="form-group advert__input-block meter meter_site">
 		    <label for="site_area">Площадь участка</label>
-		    <input type="text" class="form-control advert__input-text" id="site_area" name="site_area">
+		    <input type="text" class="form-control advert__input-text" id="site_area" name="site_area" data-validate="true" data-validate-type="required site" data-mask="true" data-mask-type="9999">
 		</div>
   	</div>
 	<div class="advert__subtitle" data-box="living_site_type">
     	Тип участка
     </div>
   	<div class="advert__row" data-box="living_site_type">	
-    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons" data-validate="true" data-validate-type="radio">
     		<label class="btn btn-secondary advert__room" data-input="variable">
 	    		<input type="radio" name="site" value="1"> ИЖС
 	  		</label>

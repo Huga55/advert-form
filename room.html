@@ -6,7 +6,7 @@
     	Комнат в сделке
     </div>
 	<div class="advert__row">	
-    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons" data-validate="true" data-validate-type="radio">
     		<label class="btn btn-secondary advert__room" for="room-1" data-input="variable">
 	    		<input type="radio" name="room" value="1"> 1
 	  		</label>
@@ -27,22 +27,22 @@
   	<div class="advert__row">
   		<div class="form-group advert__input-block">
 		    <label for="room_area">Площадь</label>
-		    <input type="text" class="form-control advert__input-text" name="general_area">
+		    <input type="text" class="form-control advert__input-text" name="general_area" data-validate="true" data-validate-type="required three" data-mask="true" data-mask-type="999">
 		</div>
 		<div class="form-group advert__input-block">
 		    <label for="room_floor">Этаж</label>
-		    <input type="text" class="form-control advert__input-text" name="kitchen_area">
+		    <input type="text" class="form-control advert__input-text" name="kitchen_area" data-validate="true" data-validate-type="required two" ata-mask="true" data-mask-type="99">
 		</div>
 		<div class="form-group advert__input-block">
 		    <label for="room_floor_count">Этажей в доме</label>
-		    <input type="text" class="form-control advert__input-text" name="living_area">
+		    <input type="text" class="form-control advert__input-text" name="living_area" data-validate="true" data-validate-type="required two" ata-mask="true" data-mask-type="99">
 		</div>
   	</div>
   	<div class="advert__subtitle">
     	Комнат в квартире
     </div>
   	<div class="advert__row">	
-    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons">
+    	<div class="btn-group btn-group-toggle advert__radios advert__radios_inline" data-toggle="buttons" data-validate="true" data-validate-type="radio">
     		<label class="btn btn-secondary advert__room" for="room-1" data-input="variable">
 	    		<input type="radio" name="room" value="1"> 1
 	  		</label>
@@ -70,19 +70,19 @@
   	<div class="advert__row">
   		<div class="form-group advert__input-block meter">
 		    <label for="room_apart_area">Площадь квартиры</label>
-		    <input type="text" class="form-control advert__input-text" id="room_apart_area" name="apart_area">
+		    <input type="text" class="form-control advert__input-text" id="room_apart_area" name="apart_area" data-validate="true" data-validate-type="required three" data-mask="true" data-mask-type="999">
 		</div>
 		<div class="form-group advert__input-block meter">
 		    <label for="kitchen_area">Площадь кухни</label>
-		    <input type="text" class="form-control advert__input-text" id="room_kitchen_area" name="kitchen_area">
+		    <input type="text" class="form-control advert__input-text" id="room_kitchen_area" name="kitchen_area" data-mask="true" data-mask-type="999">
 		</div>
 		<div class="form-group advert__input-block meter">
 		    <label for="room_living_area">Жилая площадь</label>
-		    <input type="text" class="form-control advert__input-text" id="room_living_area" name="room_living_area">
+		    <input type="text" class="form-control advert__input-text" id="room_living_area" name="room_living_area" data-mask="true" data-mask-type="999">
 		</div>
 		<div class="form-group advert__input-block meter meter_simple">
 		    <label for="room_roof">Высота потолков</label>
-		    <input type="text" class="form-control advert__input-text" id="room_roof" name="roof">
+		    <input type="text" class="form-control advert__input-text" id="room_roof" name="roof" data-mask="true" data-mask-type="99">
 		</div>
   	</div>
   	<div class="advert__subtitle">

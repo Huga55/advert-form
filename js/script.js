@@ -6,7 +6,7 @@ $(".input_view").change(function() {
 	changePropertyGroup(dataView, id);
 })
 
-$("[name='advert_type']").change(function() {
+$("[name='advert_type_general']").change(function() {
 	if($(this).attr("id") === "type2") {
 		showHideSite(true);
 	}else {
@@ -43,6 +43,27 @@ $("body").on("click", "[data-input='variable'].active", function(e) {
 	$(this).first().prop("checked", false);
 	$(this).removeClass("active");
 });
+
+//модальное окно
+
+$(".advert__button-phone").click(function() {
+	$(".advert__modal").addClass("advert__modal_active");
+	$(".advert__modal-window").addClass("advert__modal-window_active");
+});
+
+$(".advert__modal, .advert__modal-close").on("click", function() {
+	$(".advert__modal_active").removeClass("advert__modal_active");
+	$(".advert__modal-window_active").removeClass("advert__modal-window_active");
+})
+
+$(".advert__modal-window").click(function(e) {
+	e.stopPropagation();
+});
+
+const closeModal = () => {
+	$(".advert__modal_active").removeClass("advert__modal_active");
+	$(".advert__modal-window_active").removeClass("advert__modal-window_active");
+}
 
 const advert = {
 	living: {
@@ -283,9 +304,11 @@ const getFormThatToNeed = () => {
 
 const trigger = () => {
 	$("#kind1-1").trigger("click");
-};
+}
 
-setTimeout(trigger, 150);
+//setTimeout(trigger, 800);
+
+
 
 $("div#drop").dropzone({ 
 	url: "/file/post",
@@ -321,3 +344,174 @@ $(".advert__youtube-delete").click(function(e) {
 	$("[name='youtube']").val("");
 	$(".advert__youtube-result").addClass("advert__youtube_none");
 })
+
+
+
+
+//yandex map
+ymaps.ready(init);
+let myMap, myPlacemark;
+
+function init() {
+	myMap = new ymaps.Map("YMapsID", {
+		center: [55.76, 37.64],
+		zoom: 7
+	})
+
+	//коллекция для удаления старых меток
+	var myCollection = new ymaps.GeoObjectCollection();
+	// Обработка события, возникающего при щелчке
+    // левой кнопкой мыши в любой точке карты.
+    myMap.events.add('click', function (e) {
+    	const coords = e.get('coords');
+
+    	const coordX = coords[0].toPrecision(6);
+    	const coordY = coords[1].toPrecision(6);
+
+    	//даление старых меток всех (НУЖНА КОЛЛЕКЦИЯ)
+    	myCollection.removeAll();
+
+    	//создание и добавление новой метки
+    	const myPlacemark = new ymaps.Placemark([coordX,coordY], null, {
+			preset: 'islands#blueDotIcon'
+		});
+		myCollection.add(myPlacemark); 
+		myMap.geoObjects.add(myCollection);
+
+		getAddressFromMap(coordX, coordY);
+    });
+}
+
+
+//получение адресов при заполнении инпута
+let addressTimer;
+$(".advert__address").keyup(function(e) {
+	clearTimeout(addressTimer);
+	addressTimer = setTimeout(() => getAddresses(e.currentTarget.value), 600);
+});
+
+const getAddresses = (value) => {
+	ymaps.suggest(value).then(function (items) {
+		$(".advert__adresses").html("");
+		let addresses = "";
+		items.map((i) => {
+			addresses += "<div class=\"advert__adresses-item\">" + i.value + "</div>";
+		});
+	    $(".advert__adresses").html(addresses);
+	    console.log(items);
+	});
+}
+
+$(document).on("click", ".advert__adresses-item", function(e) {
+	e.stopPropagation();
+	const address = $(e.currentTarget).html();
+	$(".advert__address").val(address);
+	$(".advert__adresses").html("");
+});
+
+$("body").click(function() {
+	$(".advert__adresses").html("");
+});
+
+const getAddressFromMap = (lat, long) => {
+	data = {
+		geocode_str: "",
+		kind: ["area", "locality", "street", "house", "district"],
+		latitude: 55.68107936287037,
+		longitude: 37.61248956085201,
+		precision: ["exact", "number", "other"],
+	}
+
+	// $.ajax({
+	//   url: "https://geo-service.domclick.ru/research/api/v1/geocode/",
+	//   type: "POST",
+	//   data: JSON.stringify(data),
+	// }).then(function(result) {
+	//   console.log(result);
+	// });
+
+
+}
+//маски
+$(document).on("input", "[data-mask='true']", function() {
+	$(this).inputmask($(this).attr("data-mask-type"));
+})
+
+
+
+//валидация
+
+$(".advert__form").submit(function(e) {
+	e.preventDefault();
+
+	$(".invalid-feedback").remove();
+	$(".is-invalid").removeClass("is-invalid");
+	$(".label_error").removeClass("label_error");
+
+	const isSuccessValidate = true;
+	const inputs = $(this).find("input, textarea");
+
+	const inputsValidate = $(this).find("[data-validate='true']").each(function(isSuccessValidate) {
+		const types = $(this).attr("data-validate-type").split(" ");
+		const value = $(this).val();
+
+		if(types[0] === "radio") {
+			const inputActive = $(this).find("input:checked");
+			if(!inputActive.length) {
+				$(this).find("label").each(function() {
+					$(this).addClass("label_error");
+					$(this).addClass("block_error");
+				});
+				isSuccessValidate = false;
+			}
+			return;
+		}
+
+		for(let type of types) {
+			const result = reglations[type](value);
+			if(result !== true) {
+				$(this).addClass("is-invalid").parent().append(
+					"<div class=\"invalid-feedback\">" + result + "</div>");
+				isSuccessValidate = false;
+				break;
+			}
+		}
+	});
+});
+
+//снять ошибку с инпута, если корректный
+$(document).on("input", ".label_error>input", function() {
+	const name = $(this).attr("name");
+	$("[name='" + name + "']").parent().removeClass("label_error");
+})
+
+
+//снять ошибку с инпута, если корректный
+$(document).on("input", ".is-invalid", function() {
+	const types = $(this).attr("data-validate-type").split(" ");
+	const value = $(this).val();
+	const error = false;
+
+	for(let type of types) {
+		const result = reglations[type](value);
+		if(result !== true) {
+			error = true;
+			break;
+		}
+	}
+	if(!error) {
+		$(this).removeClass("is-invalid");
+	}
+})
+
+
+//правила валидации
+const reglations = {
+	required: (value) => value.length > 0 || "Обязательное поле",
+	textarea: (value) => (value.length > 14 && value.length < 2501) || "Поле должно быть длиннее 15 символов и короче 2500",
+	two: (value) => value.length < 3 || "не более 99",
+	three: (value) => value.length < 4 || "не более 999",
+	home: (value) => (+value > 0 && +value <= 10000) || "От 1 до 10тыс",
+	site: (value) => (+value > 0 && +value <= 5000) || "От 1 до 5тыс",
+	office: (value) => (+value > 0 && +value <= 9999999) || "От 1 до 9млн",
+}
