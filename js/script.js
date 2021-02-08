@@ -318,6 +318,7 @@ $("div#drop").dropzone({
 	acceptedFiles:"image/*",
 	addRemoveLinks: true,
 	withCredentials: true,
+	paramName: "file",
 });
 
 
