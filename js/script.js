@@ -305,20 +305,24 @@ const getFormThatToNeed = () => {
 const trigger = () => {
 	$("#kind1-1").trigger("click");
 }
-
-//setTimeout(trigger, 800);
-
+trigger();
 
 
+
+let myDropzone;
 $("div#drop").dropzone({ 
 	url: "/file/post",
 	uploadMultiple:true,
-	autoQueue:false, 
+	autoQueue:true, 
 	autoProcessQueue: false,
 	acceptedFiles:"image/*",
 	addRemoveLinks: true,
 	withCredentials: true,
 	paramName: "file",
+	parallelUploads: 10,
+	init: function() {
+		myDropzone = this;
+	},
 });
 
 
@@ -350,37 +354,47 @@ $(".advert__youtube-delete").click(function(e) {
 
 
 //yandex map
-ymaps.ready(init);
-let myMap, myPlacemark;
+// ymaps.ready(init);
+// let myMap, myPlacemark;
 
-function init() {
-	myMap = new ymaps.Map("YMapsID", {
-		center: [55.76, 37.64],
-		zoom: 7
-	})
+// function init() {
+// 	myMap = new ymaps.Map("YMapsID", {
+// 		center: [55.76, 37.64],
+// 		zoom: 7
+// 	})
 
-	//коллекция для удаления старых меток
-	var myCollection = new ymaps.GeoObjectCollection();
-	// Обработка события, возникающего при щелчке
-    // левой кнопкой мыши в любой точке карты.
-    myMap.events.add('click', function (e) {
-    	const coords = e.get('coords');
+// 	//коллекция для удаления старых меток
+// 	var myCollection = new ymaps.GeoObjectCollection();
+// 	// Обработка события, возникающего при щелчке
+//     // левой кнопкой мыши в любой точке карты.
+//     myMap.events.add('click', function (e) {
+//     	const coords = e.get('coords');
 
-    	const coordX = coords[0].toPrecision(6);
-    	const coordY = coords[1].toPrecision(6);
+//     	const coordX = coords[0].toPrecision(6);
+//     	const coordY = coords[1].toPrecision(6);
 
-    	//даление старых меток всех (НУЖНА КОЛЛЕКЦИЯ)
-    	myCollection.removeAll();
+//     	//даление старых меток всех (НУЖНА КОЛЛЕКЦИЯ)
+//     	myCollection.removeAll();
 
-    	//создание и добавление новой метки
-    	const myPlacemark = new ymaps.Placemark([coordX,coordY], null, {
-			preset: 'islands#blueDotIcon'
-		});
-		myCollection.add(myPlacemark); 
-		myMap.geoObjects.add(myCollection);
+//     	//создание и добавление новой метки
+//     	const myPlacemark = new ymaps.Placemark([coordX,coordY], null, {
+// 			preset: 'islands#blueDotIcon'
+// 		});
+// 		myCollection.add(myPlacemark); 
+// 		myMap.geoObjects.add(myCollection);
 
-		getAddressFromMap(coordX, coordY);
-    });
+// 		getAddressFromMap(coordX, coordY);
+//     });
+// }
+
+//google map
+let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("advert__map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
 }
 
 
@@ -441,6 +455,12 @@ $(document).on("input", "[data-mask='true']", function() {
 
 
 //валидация
+$(".advert__form").append($(".dz-hidden-input"));
+$(".dz-hidden-input").change(function(e) {
+	const elem = e.currentTarget;
+	//debugger;
+});
+
 
 $(".advert__form").submit(function(e) {
 	e.preventDefault();
@@ -451,6 +471,16 @@ $(".advert__form").submit(function(e) {
 
 	const isSuccessValidate = true;
 	const inputs = $(this).find("input, textarea");
+
+	
+	
+	//все файлы из инпута с фото, для проверки количества! отправка есть ниже!!!
+	const fileInputVal = myDropzone.getAcceptedFiles();
+	if(fileInputVal.length < 3) {
+		$(".advert__window_file").append("<div class=\"invalid-feedback\">Добаьвте не менее 3х фтографий</div>");
+		$(".advert__container-file").addClass("label_error");
+	}
+
 
 	const inputsValidate = $(this).find("[data-validate='true']").each(function(isSuccessValidate) {
 		const types = $(this).attr("data-validate-type").split(" ");
@@ -478,6 +508,14 @@ $(".advert__form").submit(function(e) {
 			}
 		}
 	});
+
+	if(isSuccessValidate) {
+		//настройка отправки формы здесь!! если валидация пройдена
+
+
+		//отправка фото, урл для отправки нужно указать в создании dropzone (выше)
+		myDropzone.processQueue();
+	}
 });
 
 //снять ошибку с инпута, если корректный

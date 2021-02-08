@@ -49,7 +49,7 @@
 				<div class="advert__back">
 					<button type="button" class="btn advert__back-button">Мое объявления</button>
 				</div>
-				<form class="advert__form">
+				<form class="advert__form" enctype="multipart/form-data">
 					<div class="advert__window">
 						<h2 class="advert__title">
 							Мои объявление
@@ -173,11 +173,11 @@
 						    <div class="advert__adresses">
 						    </div>
 						</div>
-						<div class="advert__map">
-							<div id="YMapsID" style="width:100%;height:310px"></div>
+						<div class="advert__map" id="advert__map">
+							<!-- <div id="YMapsID" style="width:100%;height:310px"></div> -->
 						</div>
 					</div>	
-					<div class="advert__window">
+					<div class="advert__window advert__window_file">
 						<h2 class="advert__title">
 							Фотографии
 						</h2>
@@ -270,21 +270,25 @@
 				</form>
 			</div>
 		</section>
-		<div w3-include-html="about_office.html" class="none"></div>
-		<div w3-include-html="apart.html" class="none"></div>
-		<div w3-include-html="comercial_rent.html" class="none"></div>
-		<div w3-include-html="garage.html" class="none"></div>
-		<div w3-include-html="home.html" class="none"></div>
-		<div w3-include-html="house.html" class="none"></div>
-		<div w3-include-html="living_additional.html" class="none"></div>
-		<div w3-include-html="living_deal.html" class="none"></div>
-		<div w3-include-html="living_rent.html" class="none"></div>
-		<div w3-include-html="office.html" class="none"></div>
-		<div w3-include-html="office_additional.html" class="none"></div>
-		<div w3-include-html="room.html" class="none"></div>
-		<div w3-include-html="site.html" class="none"></div>
-		<div w3-include-html="sale.html" class="none"></div>
-		<div w3-include-html="rent.html" class="none"></div>
+		<div class="none">
+		<?php
+			include "pages/about_office.php";
+			include "pages/apart.php";
+			include "pages/comercial_rent.php";
+			include "pages/garage.php";
+			include "pages/home.php";
+			include "pages/house.php";
+			include "pages/living_additional.php";
+			include "pages/living_deal.php";
+			include "pages/living_rent.php";
+			include "pages/office.php";
+			include "pages/office_additional.php";
+			include "pages/room.php";
+			include "pages/site.php";
+			include "pages/sale.php";
+			include "pages/rent.php";
+		?>
+		</div>
 	</main>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -320,10 +324,12 @@
 	  }
 	  trigger();
 	};
-	includeHTML()
+	//includeHTML()
 
 	</script>
-
+	<script async
+	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNottkpmhLsjl-xNdZ4bBmDBfjdCExWM4&callback=initMap">
+	</script>
 	<script src="js/dist/jquery.inputmask.min.js"></script>
 	<script src="dist/dropzone.js"></script>
 	<script src="js/script.js"></script>

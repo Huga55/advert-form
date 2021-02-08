@@ -68,6 +68,14 @@ body {
     box-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,.07);
 }
 
+.advert__window_file {
+	position: relative;
+}
+
+.advert__window_file .invalid-feedback {
+	display: block;
+}
+
 .advert__title {
 	margin-bottom: 24px;
 	font-size: 24px;
@@ -345,6 +353,9 @@ body {
 	text-align: center;
 }
 
+.dz-error-message {
+	display: none;
+}
 
 .advert__youtube_none {
 	display: none !important;
@@ -521,7 +532,9 @@ body {
 	margin-bottom: 20px;
 }
 
-
+.advert__map {
+	height: 300px;
+}
 
 
 
@@ -578,6 +591,13 @@ body {
 	.advert__youtube-button {
 		margin: 0;
 		margin-top: 20px;
+	}
+}
+
+@media screen and (max-width: 430px) {
+	.advert__container-file {
+		flex-direction: column;
+		align-items: center;
 	}
 }
 
