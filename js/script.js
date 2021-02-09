@@ -14,8 +14,6 @@ $("[name='advert_type_general']").change(function() {
 	}
 });
 
-//$("#kind1-1").prop("checked", true);
-
 const changePropertyGroup = (data, id) => {
 	$(".advert__group_property").addClass("advert__group_property-none");
 	$("[name='kind']").prop("checked", false);
@@ -300,7 +298,29 @@ const getFormThatToNeed = () => {
 		}
 		$("[data-options='general_form']").find("[data-box='" + block + "']").remove();
 	}
+
+	//кнопка для скрытия и показа окна с инпутами
+	let button = document.createElement("span");
+	if($(".advert__window-general").hasClass("advert__window-general_active")) {
+		button.className = "btn btn-dark advert__general-button"; 
+		button.innerHTML = "Скрыть параметры";
+	}else {
+		button.className = "btn btn-dark advert__general-button"; 
+		button.innerHTML = "Показать параметры";
+	}
+	$("[data-options='general_form']").append(button);
 }
+
+//скрыть / показать форму
+$(document).on("click", ".advert__general-button", function(e) {
+	if($(".advert__window-general").hasClass("advert__window-general_active")) {
+		$(".advert__window-general_active").removeClass("advert__window-general_active");
+		$(this).html("Показать параметры");
+	}else {
+		$(".advert__window-general").addClass("advert__window-general_active");
+		$(this).html("Скрыть параметры");
+	}
+})
 
 const trigger = () => {
 	$("#kind1-1").trigger("click");
@@ -418,7 +438,20 @@ function initMap() {
 	  	}, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
 		      	if (results[0]) {
-		        	alert(results[0].formatted_address);
+		      		//получение адреса без почтового индекса, а так же меняем порядок слов, 
+		      		//тк яндекс не распознает данный формат
+		      		const address = results[0].formatted_address;
+
+		      		let postalCode;
+		      		for(let details of results[0].address_components) {
+		      			if(details.types[0] === "postal_code") {
+		      				postalCode = ", " + details.long_name;
+		      			}
+		      		}
+		      		const newAddress = address.replace( new RegExp(postalCode), "").split(", ").reverse().join(", ");
+		      		//вызываем список адресов от яндекса
+		      		$(".advert__address").val(newAddress);
+		      		getAddresses(newAddress);
 		      	}
 	    	}
 	  	});
@@ -443,7 +476,6 @@ const getAddresses = (value) => {
 			addresses += "<div class=\"advert__adresses-item\">" + i.value + "</div>";
 		});
 	    $(".advert__adresses").html(addresses);
-	    console.log(items);
 	});
 }
 
@@ -466,16 +498,6 @@ const getAddressFromMap = (lat, long) => {
 		longitude: 37.61248956085201,
 		precision: ["exact", "number", "other"],
 	}
-
-	// $.ajax({
-	//   url: "https://geo-service.domclick.ru/research/api/v1/geocode/",
-	//   type: "POST",
-	//   data: JSON.stringify(data),
-	// }).then(function(result) {
-	//   console.log(result);
-	// });
-
-
 }
 //маски
 $(document).on("input", "[data-mask='true']", function() {

@@ -18,7 +18,6 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link rel="stylesheet" href="dist/dropzone.css" />
 	<link rel="stylesheet" href="css/css.css">
-	<!-- <script src="https://api-maps.yandex.ru/1.1/index.xml" type="text/javascript"></script> -->
 	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 </head>
 <body>
@@ -212,8 +211,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="advert__window" data-options="general_form">
-											
+					<div class="advert__window advert__window-general" data-options="general_form">
+						<button class="btn btn-dark advert__general-button">
+							Все параметры
+						</button>						
 					</div>	
 					<div class="advert__window" data-options="sale_form">
 											
@@ -295,43 +296,11 @@
 	<!-- jQuery and JS bundle w/ Popper.js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/gh/jquery-form/form@4.3.0/dist/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
-	<script>
-	function includeHTML() {
-	  var z, i, elmnt, file, xhttp;
-	  /*loop through a collection of all HTML elements:*/
-	  z = document.getElementsByTagName("*");
-	  for (i = 0; i < z.length; i++) {
-	    elmnt = z[i];
-	    /*search for elements with a certain atrribute:*/
-	    file = elmnt.getAttribute("w3-include-html");
-	    if (file) {
-	      /*make an HTTP request using the attribute value as the file name:*/
-	      xhttp = new XMLHttpRequest();
-	      xhttp.onreadystatechange = function() {
-	        if (this.readyState == 4) {
-	          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-	          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-	          /*remove the attribute, and call this function once more:*/
-	          elmnt.removeAttribute("w3-include-html");
-	          includeHTML();
-	        }
-	      }      
-	      xhttp.open("GET", file, true);
-	      xhttp.send();
-	      /*exit the function:*/
-	      return;
-	    }
-	  }
-	  trigger();
-	};
-	//includeHTML()
-
-	</script>
 	<script async
 	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNottkpmhLsjl-xNdZ4bBmDBfjdCExWM4&callback=initMap">
 	</script>
-	<script src="js/dist/jquery.inputmask.min.js"></script>
-	<script src="dist/dropzone.js"></script>
+	<script src="js/inputmask/dist/jquery.inputmask.min.js"></script>
+	<script src="js/dropzone/dist/dropzone.js"></script>
 	<script src="js/script.js"></script>
 </body>
 </html>
