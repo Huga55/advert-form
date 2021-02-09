@@ -388,14 +388,44 @@ $(".advert__youtube-delete").click(function(e) {
 // }
 
 //google map
-let map;
+let googleMap;
+let googleMarker;
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById("advert__map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
-  });
+	googleMap = new google.maps.Map(document.getElementById("advert__map"), {
+    	center: { 
+    		lat: 55.753960,
+        	lng: 37.620393, 
+    	},
+    	zoom: 8,
+ 	});
+
+ 	const geocoder = new google.maps.Geocoder();
+
+  	google.maps.event.addListener(googleMap, "click", function(event) {
+	    if(googleMarker) {
+	        googleMarker.setPosition(event.latLng);
+	    } else {  
+	        googleMarker = new google.maps.Marker({
+	            position: event.latLng,
+	            map: googleMap,
+	            title: "myTitle"
+	        });
+	    }
+
+	    geocoder.geocode({
+		    'latLng': event.latLng
+	  	}, function(results, status) {
+		    if (status == google.maps.GeocoderStatus.OK) {
+		      	if (results[0]) {
+		        	alert(results[0].formatted_address);
+		      	}
+	    	}
+	  	});
+	});
 }
+
+
 
 
 //получение адресов при заполнении инпута
