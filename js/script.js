@@ -415,6 +415,7 @@ $(".advert__youtube-delete").click(function(e) {
 //google map
 let googleMap;
 let googleMarker;
+let setGoogleMarker;
 
 function initMap() {
 	googleMap = new google.maps.Map(document.getElementById("advert__map"), {
@@ -427,16 +428,20 @@ function initMap() {
 
  	const geocoder = new google.maps.Geocoder();
 
-  	google.maps.event.addListener(googleMap, "click", function(event) {
-	    if(googleMarker) {
-	        googleMarker.setPosition(event.latLng);
+ 	setGoogleMarker = (coord) => {
+ 		if(googleMarker) {
+	        googleMarker.setPosition(coord);
 	    } else {  
 	        googleMarker = new google.maps.Marker({
-	            position: event.latLng,
+	            position: coord,
 	            map: googleMap,
 	            title: "myTitle"
 	        });
 	    }
+ 	}
+
+  	google.maps.event.addListener(googleMap, "click", function(event) {
+	    setGoogleMarker(event.latLng);
 
 	    geocoder.geocode({
 		    'latLng': event.latLng
@@ -482,9 +487,33 @@ const getAddresses = (value) => {
 	});
 }
 
+//получение координат по адресу (сервис гугл) синхронная функция
+function geoadres(address) {
+	console.log(address);
+	var resultlat = ''; var resultlng = '';
+	$.ajax({
+		async: false,
+		dataType: "json",
+		url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyCNottkpmhLsjl-xNdZ4bBmDBfjdCExWM4&callback=initMap",
+		success: function(data){
+			for (var key in data.results) {
+				resultlat = data.results[key].geometry.location.lat;
+				resultlng = data.results[key].geometry.location.lng;
+			} 
+		}
+	});
+	var latlng = new google.maps.LatLng(resultlat, resultlng);
+	setGoogleMarker(latlng);
+
+	var center = new google.maps.LatLng(resultlat, resultlng);
+    googleMap.panTo(center);
+    googleMap.setZoom(17);
+}
+
 $(document).on("click", ".advert__adresses-item", function(e) {
 	e.stopPropagation();
 	const address = $(e.currentTarget).html();
+	geoadres(address);
 	$(".advert__address").val(address);
 	$(".advert__adresses").html("");
 });
