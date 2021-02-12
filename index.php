@@ -16,7 +16,7 @@
 
 	<!-- fonts, css -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-	<link rel="stylesheet" href="dist/dropzone.css" />
+	<link rel="stylesheet" href="js/dropzone/dist/dropzone.css" />
 	<link rel="stylesheet" href="css/css.css">
 	<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 </head>
@@ -296,11 +296,12 @@
 	<!-- jQuery and JS bundle w/ Popper.js -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/gh/jquery-form/form@4.3.0/dist/jquery.form.min.js" integrity="sha384-qlmct0AOBiA2VPZkMY3+2WqkHtIQ9lSdAsAn5RUJD/3vA5MKDgSGcdmIv4ycVxyn" crossorigin="anonymous"></script>
-	<script async
-	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNottkpmhLsjl-xNdZ4bBmDBfjdCExWM4&callback=initMap">
-	</script>
+	
 	<script src="js/inputmask/dist/jquery.inputmask.min.js"></script>
 	<script src="js/dropzone/dist/dropzone.js"></script>
 	<script src="js/script.js"></script>
+	<script async
+	    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNottkpmhLsjl-xNdZ4bBmDBfjdCExWM4&callback=initMap">
+	</script>
 </body>
 </html>

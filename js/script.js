@@ -323,9 +323,14 @@ $(document).on("click", ".advert__general-button", function(e) {
 })
 
 const trigger = () => {
+	$("#kind1-1").prop("checked", false);
 	$("#kind1-1").trigger("click");
 }
-trigger();
+
+$(function () {
+	trigger();
+})
+
 
 
 
@@ -459,8 +464,6 @@ function initMap() {
 }
 
 
-
-
 //получение адресов при заполнении инпута
 let addressTimer;
 $(".advert__address").keyup(function(e) {
@@ -510,7 +513,6 @@ $(document).on("input", "[data-mask='true']", function() {
 $(".advert__form").append($(".dz-hidden-input"));
 $(".dz-hidden-input").change(function(e) {
 	const elem = e.currentTarget;
-	//debugger;
 });
 
 
